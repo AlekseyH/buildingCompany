@@ -18,8 +18,8 @@
 
 
     menuService.addSubMenuItem('topbar', 'projects', {
-      title: 'projects list',
-      state: 'project.list'
+      title: 'Projects list',
+      state: 'projects.list'
     });
   }
 }());

@@ -1,0 +1,13 @@
+<section>
+  <div class="page-header">
+    <h1>Projects</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="project in vm.projects">
+
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="!vm.projects.length">
+    No project yet, if you want <a ui-sref="articles.create">create one, press here</a>?
+  </div>
+</section>

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('project.routers')
+    .module('project.routes')
     .config(routeConfig);
 
 
@@ -15,10 +15,12 @@
         url: '/projects',
         template: '<ui-view/>'
       })
-      .state('project.list', {
+      .state('projects.list', {
         url: '',
-        templateUrl: 'modules/projects/client/views/test.html'
+        templateUrl: 'modules/project/client/views/list-projects.client.view.html',
+        controller: 'ProjectListController',
+        controllerAs: 'vm'
       });
   }
 
-});
+}());
