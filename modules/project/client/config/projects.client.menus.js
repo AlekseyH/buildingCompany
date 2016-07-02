@@ -15,11 +15,14 @@
       type: 'dropdown',
       roles: ['*']
     });
-
-
     menuService.addSubMenuItem('topbar', 'projects', {
       title: 'Projects list',
       state: 'projects.list'
+    });
+
+    menuService.addSubMenuItem('topbar', 'projects', {
+      title: 'Create new project',
+      state: 'projects.create'
     });
   }
 }());

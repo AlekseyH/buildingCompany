@@ -3,6 +3,6 @@
 
   app.registerModule('projects', ['core']);
   app.registerModule('project.services');
-  app.registerModule('project.routes', ['ui.router', 'core.routes']);
+  app.registerModule('project.routes', ['ui.router', 'core.routes', 'project.services']);
 
 }(ApplicationConfiguration));
