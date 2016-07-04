@@ -5,9 +5,9 @@
     .module('projects')
     .controller('ProjectController', ProjectController);
 
-  ProjectController.$inject = ['projectResolver'];
+  ProjectController.$inject = ['$scope', 'projectResolver'];
 
-  function ProjectController(project) {
+  function ProjectController($scope, project) {
     var vm = this;
 
     vm.save = save;
@@ -15,8 +15,12 @@
     vm.project = project;
 
     function save(isValid) {
-      console.log('result is ' + isValid);
-      console.log('result is ' + vm.project);
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.projectForm');
+        return false;
+      }
     }
   }
+  // aleksey1234Q#
 }());

@@ -12,6 +12,20 @@
             <p class="help-block error-text" ng-message="required">Project name is mandatory field</p>
           </div>
         </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="location">Project location</label>
+          <input name="location" class="form-control" id="location" ng-model="vm.project.location" type="text" placeholder="Project location" required>
+          <div ng-messages="vm.form.projectForm.location.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Project location is mandatory field</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="startDate">Project location</label>
+          <input name="startDate" class="form-control" id="startDate" ng-model="vm.project.startDate" type="date" placeholder="Start of project" required>
+          <div ng-messages="vm.form.projectForm.startDate.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please define start date of project</p>
+          </div>
+        </div>
         <div class="form-group">
           <button class="btn btn-success" type="submit">Create project</button>
         </div>
