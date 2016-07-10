@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('project.routes')
+    .module('projects.routes')
     .config(routeConfig);
 
 
@@ -17,7 +17,7 @@
       })
       .state('projects.list', {
         url: '',
-        templateUrl: 'modules/project/client/views/list-projects.client.view.html',
+        templateUrl: 'modules/projects/client/views/list-projects.client.view.html',
         controller: 'ProjectListController',
         controllerAs: 'vm',
         data: {
@@ -26,7 +26,7 @@
       })
       .state('projects.create', {
         url: '/create',
-        templateUrl: 'modules/project/client/views/form-project.client.view.html',
+        templateUrl: 'modules/projects/client/views/form-project.client.view.html',
         controller: 'ProjectController',
         controllerAs: 'vm',
         resolve: {
