@@ -9,7 +9,6 @@
 
   function ProjectServices($resource) {
     return $resource('api/projects/:projectId', {
-
       projectId: '@_id'
     }, {
       update: {

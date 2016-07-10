@@ -35,7 +35,24 @@
         data: {
           pageTitle: 'Create Project'
         }
+      })
+      .state('projects.view', {
+        url: '/:projectId',
+        templateUrl: 'module/projects/client/views/list-projects.client.view.html',
+        controller: 'ProjectController',
+        controllerAs: 'vm',
+        resolve: {
+          projectResolver: getProject
+        }
       });
+  }
+
+  getProject.$inject = ['$stateParam', 'ProjectServices'];
+
+  function getProject ($stateParam, ProjectServices) {
+    return ProjectServices.get({
+      projectId: $stateParam.projectId
+    }).$promise;
   }
 
   newProject.$inject = ['ProjectServices'];
