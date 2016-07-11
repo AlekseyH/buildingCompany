@@ -38,7 +38,7 @@
       })
       .state('projects.view', {
         url: '/:projectId',
-        templateUrl: 'module/projects/client/views/list-projects.client.view.html',
+        templateUrl: 'modules/projects/client/views/view-project.client.view.html',
         controller: 'ProjectController',
         controllerAs: 'vm',
         resolve: {
@@ -47,11 +47,11 @@
       });
   }
 
-  getProject.$inject = ['$stateParam', 'ProjectServices'];
+  getProject.$inject = ['$stateParams', 'ProjectServices'];
 
-  function getProject ($stateParam, ProjectServices) {
+  function getProject ($stateParams, ProjectServices) {
     return ProjectServices.get({
-      projectId: $stateParam.projectId
+      projectId: $stateParams.projectId
     }).$promise;
   }
 

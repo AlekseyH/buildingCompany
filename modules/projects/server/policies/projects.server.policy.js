@@ -19,23 +19,23 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: 'api/projects',
+      resources: '/api/projects',
       permissions: ['*']
     }, {
-      resources: 'api/projects/:projectId',
+      resources: '/api/projects/:projectId',
       permissions: ['*']
     }] }, {
       roles: ['user'],
       allows: [{
-        resources: 'api/projects',
+        resources: '/api/projects',
         permissions: ['get', 'post']
       }, {
-        resources: 'api/projects/:projectId',
+        resources: '/api/projects/:projectId',
         permissions: ['get', 'post']
       }] }, {
         roles: ['guest'],
         allows: [{
-          resources: 'api/projects',
+          resources: '/api/projects',
           permissions: ['get']
         }]
       }]);
@@ -45,7 +45,6 @@ exports.invokeRolesPolicies = function () {
 exports.isAllowed = function (req, res, next) {
 
   var roles = (req.user) ? req.user.roles : ['guest'];
-
   if (req.project && req.user && req.project.user && req.project.user._id === req.user._id) {
     return next();
   }

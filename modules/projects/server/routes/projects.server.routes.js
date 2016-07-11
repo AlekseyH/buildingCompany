@@ -10,11 +10,11 @@ var projectPolicy = require('../policies/projects.server.policy'),
 
 module.exports = function (app) {
 
-  app.route('api/projects').all(projectPolicy.isAllowed)
+  app.route('/api/projects').all(projectPolicy.isAllowed)
     .get(projects.list)
     .post(projects.create);
 
-  app.route('api/projects/:projectId').all(projectPolicy.isAllowed)
+  app.route('/api/projects/:projectId').all(projectPolicy.isAllowed)
     .get(projects.read)
     .put(projects.update)
     .delete(projects.delete);

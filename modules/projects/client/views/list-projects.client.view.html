@@ -3,13 +3,13 @@
     <h1>Projects</h1>
   </div>
   <div class="list-group">
-    <a ng-repeat="project in vm.projects.projects" class="list-group-item">
-      <h4 class="list-group-item-heading" ng-bind="project.title"></h4>
+    <a ng-repeat="project in vm.projects | limitTo: vm.numberOfPages" class="list-group-item">
+      <h4 class="list-group-item-heading" ng-bind="project.projectName"></h4>
       <p class="list-group-item-text" ng-bind="project.location"></p>
-      <p class="list-group-item-text" ng-bind="'Amount of buildings : '+project.amountOfBuildings"></p>
-      <p class="list-group-item-text" ng-bind="'Amount of apartment : '+project.amountOfApartments"></p>
+      <p class="list-group-item-text" ng-bind="project.startDate"></p>
     </a>
   </div>
+  <strong>Common amout of projects is </strong><small ng-bind="vm.amout"></small>
   <div class="alert alert-warning text-center" ng-if="vm.projects.$resolved && !vm.projects.length">
     No project yet, if you want <a ui-sref="articles.create">create one, press here</a>?
   </div>

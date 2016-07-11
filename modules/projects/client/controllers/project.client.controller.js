@@ -37,7 +37,6 @@
       }
 
       function successCallBack (res) {
-        console.log(res);
         $state.go('projects.view', {
           projectId: res._id
         });
@@ -45,7 +44,6 @@
 
       function errorCallBack(res) {
         vm.error = res.data + ' ' + res.statusText;
-        console.log(res);
       }
     }
   }

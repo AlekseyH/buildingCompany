@@ -26,8 +26,7 @@ var ProjectSchema = new Schema({
     required: 'Location of project is mandatory field'
   },
   startDate: {
-    type: Date,
-    default: Date.now
+    type: Date
   },
   user: {
     type: Schema.ObjectId,
