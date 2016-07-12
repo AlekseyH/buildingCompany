@@ -72,7 +72,7 @@ exports.delete = function (req, res) {
 
 
 exports.list = function (req, res) {
-  Project.find().sort('-created').populate('user, displayName').exec(function (err, projects) {
+  Project.find().sort('created').populate('user, displayName').exec(function (err, projects) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

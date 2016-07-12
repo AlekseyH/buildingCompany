@@ -3,13 +3,20 @@
     <h1>Projects</h1>
   </div>
   <div class="list-group">
-    <a ng-repeat="project in vm.projects | limitTo: vm.numberOfPages" class="list-group-item">
+    <a ng-repeat="project in vm.array | limitTo: vm.limitedSize" class="list-group-item">
       <h4 class="list-group-item-heading" ng-bind="project.projectName"></h4>
       <p class="list-group-item-text" ng-bind="project.location"></p>
-      <p class="list-group-item-text" ng-bind="project.startDate"></p>
+      <strong><p class="list-group-item-text" ng-bind="project.startDate | date:'yyyy-MM-dd'"></p></strong>
     </a>
   </div>
-  <strong>Common amout of projects is </strong><small ng-bind="vm.amout"></small>
+  <nav>
+    <ul class="pager">
+      <li ng-show="!vm.current == 0"><a href="#" ng-click="vm.getPrevious((vm.current -1)* vm.limitedSize)" >Previuos</a></li>
+      <small ng-bind="vm.current"></small>/<small ng-bind="vm.numberOfPages"></small>
+      <li ng-show="vm.current < vm.numberOfPages"><a href="#" ng-click="vm.getNext((vm.current + 1)* vm.limitedSize)">Next</a></li>
+    </ul>
+  </nav>
+
   <div class="alert alert-warning text-center" ng-if="vm.projects.$resolved && !vm.projects.length">
     No project yet, if you want <a ui-sref="articles.create">create one, press here</a>?
   </div>
