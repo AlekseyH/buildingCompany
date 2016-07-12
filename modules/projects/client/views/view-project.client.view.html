@@ -1,12 +1,30 @@
 <section>
   <div class="page-header">
-    <h1 ng-bind="vm.project.projectName"></h1>
-  </div>
-  <div class="list-group">
-    <div class="list-group-item">
-      <p class="list-group-item-text" ng-bind="vm.project.location"></p>
-      <p class="list-group-item-text" ng-bind="vm.project.startDate | date:'yyyy-MM-dd'"></p>
-      <a></a>
+    <h4>Description of project <span class="glyphicon glyphicon-home"></span></h4>
+  </div><br>
+  <div class="container text-left">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="well">
+          <h3 ng-bind="vm.project.projectName"></h3>
+          <h4  ng-bind="vm.project.location"></h4>
+          <h4  ng-bind="vm.project.startDate | date:'yyyy-MM-dd'"></h4><br>
+          <div>
+            <a class="btn btn-success" ui-sref="projects.edit({projectId : project._id})">Edit Project</a>
+            <a class="btn btn-danger">Remove Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <img src="modules/core/client/img/brand/projects.jpg" class="img-responsive" style="width:100%" alt="Image">
+      </div>
+    </div>
+  </div><br>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-sm-offset-4">
+        <img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      </div>
     </div>
   </div>
 </section>

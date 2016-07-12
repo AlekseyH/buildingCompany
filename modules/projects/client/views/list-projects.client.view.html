@@ -1,9 +1,19 @@
 <section>
   <div class="page-header">
-    <h1>Projects</h1>
+    <div class="row">
+      <div class="col-md-3">
+        <h4>Projects List  <span class="glyphicon glyphicon-list"></span></h4>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" ng-change="vm.search()" ng-model="vm.searchCriteria" placeholder="Search project by name ..." />
+          <i class="glyphicon glyphicon-search form-control-feedback"></i>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="list-group">
-    <a ng-repeat="project in vm.array | limitTo: vm.limitedSize" class="list-group-item">
+    <a ng-repeat="project in vm.array | limitTo: vm.limitedSize" class="list-group-item" ui-sref="projects.view({projectId : project._id})">
       <h4 class="list-group-item-heading" ng-bind="project.projectName"></h4>
       <p class="list-group-item-text" ng-bind="project.location"></p>
       <strong><p class="list-group-item-text" ng-bind="project.startDate | date:'yyyy-MM-dd'"></p></strong>

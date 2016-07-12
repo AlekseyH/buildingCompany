@@ -44,6 +44,15 @@
         resolve: {
           projectResolver: getProject
         }
+      })
+      .state('projects.edit', {
+        url: '/:projectId',
+        templateUrl: 'modules/projects/client/views/form-project.client.view.html',
+        controller: 'ProjectController',
+        controllerAs: 'vm',
+        resolve: {
+          projectResolver: getProject
+        }
       });
   }
 
