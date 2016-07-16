@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>{{vm.project._id ? 'Edit project form' : 'Project creation form'}}</h1>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-6">
     <form name="vm.form.projectForm" class="form-horizontal" ng-submit="vm.save(vm.form.projectForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -20,8 +20,8 @@
           </div>
         </div>
         <div class="form-group" show-errors>
-          <label class="control-label" for="startDate">Project location</label>
-          <input name="startDate" class="form-control" min="2015-01-01" max="2016-12-31" id="startDate" ng-model="vm.project.startDate" type="date" placeholder="Start of project" required>
+          <label class="control-label">Start date</label>
+          <md-datepicker type="date" name="startDate" ng-model="vm.project.startDate" placeholder="Fill in start date" required></md-datepicker>
           <div ng-messages="vm.form.projectForm.startDate.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Please define start date of project</p>
           </div>

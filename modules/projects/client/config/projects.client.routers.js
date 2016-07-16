@@ -46,7 +46,7 @@
         }
       })
       .state('projects.edit', {
-        url: '/:projectId',
+        url: '/:projectId/edit',
         templateUrl: 'modules/projects/client/views/form-project.client.view.html',
         controller: 'ProjectController',
         controllerAs: 'vm',
