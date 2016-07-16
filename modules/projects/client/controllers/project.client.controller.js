@@ -33,7 +33,6 @@
       if (vm.project._id) {
         vm.project.$update(successCallBack, errorCallBack);
       } else {
-        console.log(vm.project.startDate);
         vm.project.$save(successCallBack, errorCallBack);
       }
 
