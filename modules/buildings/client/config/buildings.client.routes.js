@@ -11,16 +11,19 @@
     $stateProvider
       .state('buildings', {
         abstract: true,
-        url: '/buildings',
+        url: '/project/:projectId/building',
         template: '<ui-view/>'
       })
       .state('buildings.create', {
         url: '/create',
-        templateUrl: '../views/form-building.client.view.html',
+        templateUrl: 'modules/buildings/client/views/form-building.client.view.html',
         controller: 'BuildingsController',
         controllerAs: 'vm',
         resolve: {
           buildingResolve: newBuilding
+        },
+        params: {
+          projectName: ''
         }
       })
       .state('buildings.view', {
@@ -37,8 +40,9 @@
       });
   }
 
+  newBuilding.$inject = ['BuildingServices'];
 
-  function newBuilding () {
-
+  function newBuilding (BuildingServices) {
+    return new BuildingServices();
   }
 }());
