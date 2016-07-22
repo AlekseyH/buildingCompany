@@ -16,9 +16,12 @@
       })
       .state('buildings.create', {
         url: '/create',
-        templateUrl: '',
+        templateUrl: '../views/form-building.client.view.html',
         controller: 'BuildingsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          buildingResolve: newBuilding
+        }
       })
       .state('buildings.view', {
         url: '/:buildingId',
@@ -32,5 +35,10 @@
         controller: '',
         controllerAs: ''
       });
+  }
+
+
+  function newBuilding () {
+
   }
 }());
