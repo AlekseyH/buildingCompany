@@ -20,7 +20,7 @@
         controller: 'BuildingsController',
         controllerAs: 'vm',
         resolve: {
-          buildingResolve: newBuilding
+          projectResolve: newBuilding
         },
         params: {
           projectName: ''
@@ -40,9 +40,11 @@
       });
   }
 
-  newBuilding.$inject = ['BuildingServices'];
+  newBuilding.$inject = ['$stateParams', 'ProjectServices'];
 
-  function newBuilding (BuildingServices) {
-    return new BuildingServices();
+  function newBuilding ($stateParams, ProjectServices) {
+    return ProjectServices.get({
+      projectId: $stateParams.projectId
+    }).$promise;
   }
 }());

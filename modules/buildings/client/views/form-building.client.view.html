@@ -1,35 +1,43 @@
 <section>
   <div class="page-header">
-    <h3>Add building to project</h3>
+    <h3>Add building to project {{vm.parentName}}</h3>
   </div>
   <div class="col-md-6">
     <form name="vm.form.buildingForm" class="form-horizontal" ng-submit="vm.save(vm.form.buildingForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="buildingName">Building name</label>
-          <input name="buildingName" type="text" ng-model="vm.buildingName" id="buildingName" class="form-control" placeholder="Fill in name is should be unique" required>
+          <input name="buildingName" type="text" ng-model="vm.building.buildingName" id="buildingName" class="form-control" placeholder="Fill in name of building" required>
           <div ng-messages="vm.form.buildingForm.buildingName.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Building name is required.</p>
           </div>
         </div>
-        <div class="form-group">
+
+        <div class="form-group" show-errors>
           <label class="control-label" for="address">Address</label>
-          <input name="address" data-ng-model="vm.building.address" id="address" class="form-control" placeholder="Fill in address of building"></input>
+          <input name="address" type="text" data-ng-model="vm.building.address" id="address" class="form-control" placeholder="Fill in address of building" required/>
+          <div ng-messages="vm.form.buildingForm.address.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Address name is required.</p>
+          </div>
         </div>
-        <div class="form-group">
+
+        <div class="form-group" show-errors>
           <label class="control-label" for="amount">Amount of apartments</label>
-          <input name="amount" data-ng-model="vm.building.amount" id="amount" class="form-control" placeholder="default value is 1"/>
+          <input name="amount" type="text" data-ng-model="vm.building.amount" id="amount" class="form-control" placeholder="minimum amount is 1" required/>
+          <div ng-messages="vm.form.buildingForm.amount.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">At least has to be one apartment.</p>
+          </div>
         </div>
 
         <div class="form-group">
-          <button class="btn btn-success">{{vm.building._id ? 'Update' : 'Create'}}</button>
+          <button type="submit" class="btn btn-success">{{vm.building._id ? 'Update' : 'Create'}}</button>
         </div>
+
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>
         </div>
-      </fieldset>
-    </form>
 
+      </fieldset>
     </form>
   </div>
 </section>
