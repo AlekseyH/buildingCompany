@@ -8,11 +8,13 @@
   BuildingsController.$inject = ['$scope', '$state', 'projectResolve', '$window', 'Authentication'];
 
   function BuildingsController ($scope, $state, project, $window, Authentication) {
+
     var vm = this;
     vm.project = project;
     vm.building = {};
     vm.parentName = $state.params.projectName;
     vm.save = save;
+    vm.remove = remove;
 
     function save(isValid) {
 
@@ -22,11 +24,24 @@
       }
 
       if (vm.project._id) {
-        console.log(vm.project);
-        console.log(vm.building);
+        // vm.project.buildings.push(vm.building);
+        vm.project.addBuilding = vm.building;
+        vm.project.$update(successCallBack, errorCallBack);
       } else {
         // throw error , can't exist building without project
+
       }
+    }
+
+    function successCallBack(res) {
+      console.log(res);
+    }
+
+    function errorCallBack(res) {
+      console.log(res);
+    }
+    function remove($window) {
+
     }
 
 

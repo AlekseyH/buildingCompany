@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Project = mongoose.model('Project'),
+  Building = mongoose.model('Building'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 
@@ -43,6 +44,16 @@ exports.update = function (req, res) {
   project.projectName = req.body.projectName;
   project.location = req.body.location;
   project.startDate = req.body.startDate;
+
+  if (req.body.addBuilding) {
+
+    var building = new Building();
+    building.buildingName = req.body.addBuilding.buildingName;
+    building.address = req.body.addBuilding.address;
+    building.amountOfApartments = req.body.addBuilding.amount;
+
+    project.buildings.push(building);
+  }
 
   project.save(function (err) {
     if (err) {

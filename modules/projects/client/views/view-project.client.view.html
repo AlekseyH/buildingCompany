@@ -47,10 +47,9 @@
           <div class="row">
             <div class="col-sm-12 text-left">
               <div class="list-group">
-                <a class="list-group-item"><span class="glyphicon glyphicon-link"></span> Link to building</a>
-                <a class="list-group-item"><span class="glyphicon glyphicon-link"></span> Link to building</a>
-                <a class="list-group-item"><span class="glyphicon glyphicon-link"></span> Link to building</a>
-                <a class="list-group-item"><span class="glyphicon glyphicon-link"></span> Link to building</a>
+                <a class="list-group-item" ng-repeat="building in vm.project.buildings">
+                  <span class="glyphicon glyphicon-link"></span> {{building.buildingName}}
+                </a>
               </div>
             </div>
           </div>
