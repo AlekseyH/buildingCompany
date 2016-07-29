@@ -28,9 +28,15 @@
       })
       .state('buildings.view', {
         url: '/:buildingId',
-        templateUrl: '',
-        controller: '',
-        controllerAs: ''
+        templateUrl: 'modules/buildings/client/views/view-building.client.view.html',
+        controller: 'BuildingsController',
+        controllerAs: 'vm',
+        resolve: {
+          projectResolve: newBuilding
+        },
+        params: {
+          index: ''
+        }
       })
       .state('buildings.edit', {
         url: '/:buildingId/edit',

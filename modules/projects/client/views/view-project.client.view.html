@@ -47,7 +47,7 @@
           <div class="row">
             <div class="col-sm-12 text-left">
               <div class="list-group">
-                <a class="list-group-item" ng-repeat="building in vm.project.buildings">
+                <a class="list-group-item" ui-sref="buildings.view({projectId: vm.project._id, buildingId: building._id, index: $index})" ng-repeat="building in vm.project.buildings">
                   <span class="glyphicon glyphicon-link"></span> {{building.buildingName}}
                 </a>
               </div>

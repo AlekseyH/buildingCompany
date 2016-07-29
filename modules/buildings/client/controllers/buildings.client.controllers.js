@@ -10,12 +10,21 @@
   function BuildingsController ($scope, $state, project, $window, Authentication) {
 
     var vm = this;
+
+  // initialization objects
     vm.project = project;
     vm.building = {};
-    vm.parentName = $state.params.projectName;
+
+  // functionality
     vm.save = save;
     vm.remove = remove;
+    vm.edit = edit;
 
+  // initialization variables
+    vm.parentName = $state.params.projectName;
+    vm.index = $state.params.index ? $state.params.index : 0;
+
+  // implementation
     function save(isValid) {
 
       if (!isValid) {
@@ -24,7 +33,7 @@
       }
 
       if (vm.project._id) {
-        // vm.project.buildings.push(vm.building);
+
         vm.project.addBuilding = vm.building;
         vm.project.$update(successCallBack, errorCallBack);
       } else {
@@ -34,16 +43,22 @@
     }
 
     function successCallBack(res) {
-      console.log(res);
+      $state.go('projects.view', {
+        projectId: res._id
+      });
     }
 
     function errorCallBack(res) {
-      console.log(res);
+      vm.error = res.data + ' ' + res.statusText;
     }
+
     function remove($window) {
 
     }
 
+    function edit() {
+
+    }
 
   }
 }());

@@ -1,0 +1,50 @@
+<section>
+  <div class="page-header">
+    <h4>Building description <span class="glyphicon glyphicon-book"></span></h4>
+  </div><br>
+  <div class="container text-left">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="list-group">
+                <div class="list-group-item" ng-bind="vm.project.buildings[vm.index].buildingName"></div>
+                <div class="list-group-item" ng-bind="vm.project.buildings[vm.index].address"></div>
+                <div class="list-group-item" ng-bind="vm.project.buildings[vm.index].amountOfApartments"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <a class="btn btn-success">Edit Project</a>
+            </div>
+            <div class="col-sm-6">
+              <a class="btn btn-danger">Remove Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <img src="modules/core/client/img/brand/projects.jpg" class="img-responsive" style="width:100%" alt="Image">
+      </div>
+    </div>
+  </div><br>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4 class="text-left">Apartments list <span class="glyphicon glyphicon-list"></span></h4>
+            </div>
+          </div>
+          <md-divider></md-divider><hr>
+        </div>
+      </div>
+      <div class="col-sm-offset-4">
+        <img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      </div>
+    </div>
+  </div>
+</section>
