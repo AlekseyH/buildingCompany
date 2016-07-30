@@ -45,7 +45,7 @@ exports.update = function (req, res) {
   project.location = req.body.location;
   project.startDate = req.body.startDate;
 
-  if (req.body.addBuilding) {
+  if (req.body.isNewBuilding) {
 
     var building = new Building();
     building.buildingName = req.body.addBuilding.buildingName;
@@ -53,6 +53,11 @@ exports.update = function (req, res) {
     building.amountOfApartments = req.body.addBuilding.amount;
 
     project.buildings.push(building);
+  }
+
+  if (req.body.removeBuilding) {
+    var index = req.body.index;
+    project.buildings.splice(index, 1);
   }
 
   project.save(function (err) {

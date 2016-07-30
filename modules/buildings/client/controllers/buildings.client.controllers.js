@@ -13,6 +13,8 @@
 
   // initialization objects
     vm.project = project;
+    vm.project.isNewBuilding = false;
+    vm.project.removeBuilding = false;
     vm.building = {};
 
   // functionality
@@ -35,6 +37,7 @@
       if (vm.project._id) {
 
         vm.project.addBuilding = vm.building;
+        vm.project.isNewBuilding = true;
         vm.project.$update(successCallBack, errorCallBack);
       } else {
         // throw error , can't exist building without project
@@ -52,8 +55,18 @@
       vm.error = res.data + ' ' + res.statusText;
     }
 
-    function remove($window) {
+    function remove(index) {
 
+      if ($window.confirm('Are you sure you want to remove building ')) {
+
+        vm.project.removeBuilding = true;
+        vm.project.index = index;
+        vm.project.$update(successCallBack, errorCallBack);
+
+        $state.go('projects.view', {
+          projectId: vm.project._id
+        });
+      }
     }
 
     function edit() {
