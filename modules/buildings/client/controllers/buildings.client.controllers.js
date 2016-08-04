@@ -51,6 +51,13 @@
       });
     }
 
+    function successCallBackUpdateBuilding(res) {
+      $state.go('buildings.view', {
+        projectId: vm.project._id,
+        buildingId: vm.project.buildings[vm.index]._id,
+        index: vm.index
+      });
+    }
     function errorCallBack(res) {
       vm.error = res.data + ' ' + res.statusText;
     }
@@ -69,8 +76,8 @@
       }
     }
 
-    function edit() {
-
+    function edit(isValid) {
+      vm.project.$update(successCallBackUpdateBuilding, errorCallBack);
     }
 
   }

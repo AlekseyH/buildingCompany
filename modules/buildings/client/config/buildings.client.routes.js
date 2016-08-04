@@ -40,9 +40,15 @@
       })
       .state('buildings.edit', {
         url: '/:buildingId/edit',
-        templateUrl: '',
-        controller: '',
-        controllerAs: ''
+        templateUrl: 'modules/buildings/client/views/form-edit.building.client.view.html',
+        controller: 'BuildingsController',
+        controllerAs: 'vm',
+        resolve: {
+          projectResolve: newBuilding
+        },
+        params: {
+          index: ''
+        }
       });
   }
 
