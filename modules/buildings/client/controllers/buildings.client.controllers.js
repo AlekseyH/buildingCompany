@@ -15,6 +15,7 @@
     vm.project = project;
     vm.project.isNewBuilding = false;
     vm.project.removeBuilding = false;
+    vm.project.isUpdateBuilding = false;
     vm.building = {};
 
   // functionality
@@ -53,11 +54,11 @@
 
     function successCallBackUpdateBuilding(res) {
       $state.go('buildings.view', {
-        projectId: vm.project._id,
-        buildingId: vm.project.buildings[vm.index]._id,
-        index: vm.index
+        projectId: res._id,
+        buildingId: res.buildings[vm.index]._id
       });
     }
+
     function errorCallBack(res) {
       vm.error = res.data + ' ' + res.statusText;
     }
@@ -70,13 +71,13 @@
         vm.project.index = index;
         vm.project.$update(successCallBack, errorCallBack);
 
-        $state.go('projects.view', {
-          projectId: vm.project._id
-        });
       }
     }
 
     function edit(isValid) {
+
+      vm.project.isUpdateBuilding = true;
+      vm.project.index = vm.index;
       vm.project.$update(successCallBackUpdateBuilding, errorCallBack);
     }
 

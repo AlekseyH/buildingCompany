@@ -45,23 +45,46 @@ exports.update = function (req, res) {
   project.location = req.body.location;
   project.startDate = req.body.startDate;
 
+  /*
+    Use for add new building object to array
+  */
+
   if (req.body.isNewBuilding) {
 
     var building = new Building();
     building.buildingName = req.body.addBuilding.buildingName;
     building.address = req.body.addBuilding.address;
     building.amountOfApartments = req.body.addBuilding.amount;
+    building.project = project._id;
 
     project.buildings.push(building);
   }
 
+  /*
+    Use for remove building object inside project array
+   */
+
   if (req.body.removeBuilding) {
-    var index = req.body.index;
-    project.buildings.splice(index, 1);
+    var a = req.body.index;
+    project.buildings.splice(a, 1);
   }
 
-  project.save(function (err) {
+  /*
+    Use for update existing building inside project array
+   */
+
+  if (req.body.isUpdateBuilding) {
+    var i = req.body.index;
+    var buildin = project.buildings[i];
+
+    buildin.buildingName = req.body.buildings[i].buildingName;
+    buildin.address = req.body.buildings[i].address;
+    buildin.amountOfApartments = req.body.buildings[i].amountOfApartments;
+  }
+
+  project.save(function (err, result) {
     if (err) {
+      console.log(err);
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });

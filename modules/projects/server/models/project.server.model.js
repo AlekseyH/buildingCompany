@@ -9,6 +9,26 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
+var Building = new Schema({
+
+  buildingName: {
+    type: String,
+    required: 'Name should be unique',
+    trim: true,
+    default: ''
+  },
+  address: {
+    type: String,
+    required: 'Address mandatory field',
+    trim: true
+  },
+  amountOfApartments: {
+    type: Number,
+    required: 'Building has to have it least one apartment',
+    trim: true,
+    default: 1
+  }
+});
 /*
   Schema of Project Object
  */
@@ -32,8 +52,8 @@ var ProjectSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
-  buildings: ['Building']
+  buildings: [Building]
 });
 
-
+mongoose.model('Building', Building);
 mongoose.model('Project', ProjectSchema);
