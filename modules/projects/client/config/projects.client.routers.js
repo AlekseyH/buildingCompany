@@ -38,7 +38,7 @@
       })
       .state('projects.view', {
         url: '/:projectId',
-        templateUrl: 'modules/apartments/client/views/table-apartments.client.view.html',
+        templateUrl: 'modules/projects/client/views/view-project.client.view.html',
         controller: 'ProjectController',
         controllerAs: 'vm',
         resolve: {

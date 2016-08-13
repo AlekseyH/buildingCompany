@@ -44,7 +44,7 @@ exports.update = function (req, res) {
   project.projectName = req.body.projectName;
   project.location = req.body.location;
   project.startDate = req.body.startDate;
-
+  var removeBuildingId;
   /*
     Use for add new building object to array
   */
@@ -66,6 +66,7 @@ exports.update = function (req, res) {
 
   if (req.body.removeBuilding) {
     var a = req.body.index;
+    removeBuildingId = project.buildings[a]._id;
     project.buildings.splice(a, 1);
   }
 
@@ -84,11 +85,26 @@ exports.update = function (req, res) {
 
   project.save(function (err, result) {
     if (err) {
-      console.log(err);
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
+
+      // Handling creation or recreation apartments array
+      if (req.body.isNewBuilding) {
+        var newBuilding = project.buildings.pop();
+        console.log(newBuilding);
+        createOrUpdateApartments(newBuilding._id, newBuilding.amountOfApartments);
+      }
+
+      if (req.body.isUpdateBuilding) {
+        var amountOfApartments = project.buildings[req.body.index].amountOfApartments;
+        createOrUpdateApartments(project.buildings[req.body.index]._id, amountOfApartments);
+      }
+
+      if (req.body.removeBuilding) {
+        removeApartments(removeBuildingId);
+      }
       res.json(project);
     }
   });
@@ -109,6 +125,14 @@ exports.delete = function (req, res) {
   });
 };
 
+function createOrUpdateApartments(buildingId, amount) {
+  console.log('BuildingId :' + buildingId);
+  console.log('Amount : ' + amount);
+}
+
+function removeApartments(buildingId) {
+  console.log('BuildingId :' + buildingId);
+}
 
 exports.list = function (req, res) {
   Project.find().sort('created').populate('user, displayName').exec(function (err, projects) {
